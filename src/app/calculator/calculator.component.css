@@ -1,0 +1,118 @@
+.container {
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group {
+  position: relative;
+  font-family: sans-serif;
+  margin: 0 50px;
+  border: 1px solid lightgray;
+  box-shadow: -4px -4px 8px lightgray, 4px 4px 8px gray;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+.form-control {
+  padding: 10px;
+  outline: none;
+  width: 20rem;
+  border: 0;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+
+.form-group label {
+  position: absolute;
+  color: gray;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  transition: 0.5s;
+}
+
+.form-control:focus ~ label,
+.form-control:valid ~ label,
+input[readonly] ~ label {
+  transform: translateY(-150%);
+}
+.form-group:has(.form-control:focus),
+.form-group:has(.form-control:valid),
+.form-group:has(input[readonly]){
+  padding-top: 20px;
+}
+
+.operator {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.operator input[type="radio"] {
+  display: none;
+}
+
+.operator label {
+  display: inline-block;
+  text-align: center;
+  line-height: 40px;
+  width: 60px;
+  height: 40px;
+  border: 0;
+  transition: 0.2s;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+.operator label:hover,
+.operator input[type="radio"]:checked ~ label {
+  background: rgb(190, 190, 190);
+}
+
+.operator label:active {
+  transform: scale(0.9);
+}
+.arrow-down {
+  height: 40px;
+  font-size: 30px;
+}
+
+.alert-danger{
+  border: 1px solid rgb(253, 155, 155);
+  box-shadow: -4px -4px 8px rgb(255, 182, 182), 4px 4px 8px rgb(255, 79, 79);
+}
+
+.alert-danger label{
+  color: rgb(255, 95, 95);
+}
+/*
+.arrow-down::before,
+.arrow-down::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  translate: -50% 0;
+}
+.arrow-down::before {
+
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.arrow-down::after{
+  width: 50px ;
+  height: 50px;
+
+} */

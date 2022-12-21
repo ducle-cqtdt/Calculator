@@ -1,0 +1,73 @@
+<div class="container">
+  <h1>Calculator</h1>
+  <div class="form-group">
+    <input
+      id="input-one"
+      [(ngModel)]="calculator.inputA"
+      (input)="calculate('=')"
+      type="number"
+      class="form-control"
+      required
+    />
+    <label for="input-one">Input</label>
+  </div>
+  <div class="operator">
+    <div>
+      <input id="add" type="radio" name="operator" value="add" (click)="calculate('add')"/>
+      <label for="add">+</label>
+    </div>
+    <div>
+      <input id="minus" type="radio" name="operator" value="minus" (click)="calculate('minus')" />
+      <label for="minus">-</label>
+    </div>
+    <div>
+      <input id="multiply" type="radio" name="operator" value="multiply" (click)="calculate('multiply')"/>
+      <label for="multiply">x</label>
+    </div>
+    <div>
+      <input id="divide" type="radio" name="operator" value="divide" (click)="calculate('divide')"/>
+      <label for="divide">/</label>
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      id="input-two"
+      [(ngModel)]="calculator.inputB"
+      (input)="calculate('=')"
+      type="number"
+      class="form-control"
+      pattern="^[0-9]+$"
+      required
+    />
+    <label for="input-two">Input</label>
+  </div>
+  <div class="arrow-down">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-chevron-double-down"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+      />
+      <path
+        fill-rule="evenodd"
+        d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+      />
+    </svg>
+  </div>
+  <div class="form-group">
+    <input
+      id="output"
+      [value]="calculator.result"
+      type="text"
+      class="form-control"
+      readonly
+    />
+    <label for="output">Output</label>
+  </div>
+</div>
