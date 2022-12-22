@@ -1,0 +1,15 @@
+<div class="history">
+  <h2>History</h2>
+  <hr />
+  <ul>
+    <li *ngFor="let history of histories.slice().reverse()">
+      <div class="history__row">
+        {{ history.firstNumber }}
+        <b>{{ history.operator | toOperator }}</b>
+        {{ history.secondNumber }}
+        <b>=</b><br/>
+        {{ history.result }}
+      </div>
+    </li>
+  </ul>
+</div>

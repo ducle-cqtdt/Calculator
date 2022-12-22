@@ -1,0 +1,62 @@
+.history {
+  box-shadow: inset 4px 4px 8px rgb(177, 177, 177),
+    inset -4px -4px 8px rgb(231, 231, 231);
+  background: rgba(245, 245, 245, 0.253);
+  box-sizing: border-box;
+  padding: 15px;
+  border-radius: 5px;
+  font-family: sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #adadadc0;
+  border-radius: 5px;
+}
+
+h2 {
+  margin: 0;
+  color: rgb(100, 100, 100);
+  text-shadow: 4px 4px 3px rgba(168, 168, 168, 0.671);
+}
+hr {
+  height: 3px;
+  border: 0;
+  background-color: rgba(78, 78, 78, 0.253);
+  box-shadow: 4px 4px 4px rgba(168, 168, 168, 0.671);
+}
+ul {
+  min-height: 30vh;
+  max-height: 60vh;
+  overflow-y: auto;
+  margin-top: 0;
+  padding-top: 20px;
+}
+li {
+  list-style-type: none;
+  margin-bottom: 10px;
+  padding-right: 10px;
+}
+.history__row {
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(179, 179, 179, 0.644);
+  text-align: right;
+  cursor: pointer;
+  transition: 0.3s;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.history__row:hover {
+  background: rgb(231, 231, 231);
+  opacity: 1;
+  box-shadow: 5px 5px 5px rgba(156, 156, 156, 0.74);
+  border-color: transparent;
+  transform: translateY(-5px);
+}

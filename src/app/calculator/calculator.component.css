@@ -1,13 +1,31 @@
-.container {
-  width: 70%;
-  margin: 0 auto;
+.container-fluid {
+  width: 90%;
   padding-top: 100px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
 }
 
+.grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.grid__center {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid__right {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
 .form-group {
   position: relative;
   font-family: sans-serif;
@@ -15,7 +33,6 @@
   border: 1px solid lightgray;
   box-shadow: -4px -4px 8px lightgray, 4px 4px 8px gray;
   border-radius: 5px;
-  overflow: hidden;
   transition: 0.5s;
 }
 .form-control {
@@ -40,10 +57,12 @@
 .form-control:valid ~ label,
 input[readonly] ~ label {
   transform: translateY(-150%);
+  font-size: 0.9rem;
+  color: rgb(77, 77, 77);
 }
 .form-group:has(.form-control:focus),
 .form-group:has(.form-control:valid),
-.form-group:has(input[readonly]){
+.form-group:has(input[readonly]) {
   padding-top: 20px;
 }
 
@@ -56,12 +75,11 @@ input[readonly] ~ label {
   margin-bottom: 15px;
 }
 
-.operator input[type="radio"] {
+/* .operator input[type="radio"] {
   display: none;
-}
+} */
 
-.operator label {
-  display: inline-block;
+.operator button {
   text-align: center;
   line-height: 40px;
   width: 60px;
@@ -74,45 +92,66 @@ input[readonly] ~ label {
   cursor: pointer;
   font-family: sans-serif;
 }
-.operator label:hover,
-.operator input[type="radio"]:checked ~ label {
-  background: rgb(190, 190, 190);
+.operator button:hover,
+.operator button.active {
+  background: rgb(44, 44, 44);
+  color: #fff;
 }
 
-.operator label:active {
+.operator button:active {
   transform: scale(0.9);
 }
+
 .arrow-down {
   height: 40px;
   font-size: 30px;
 }
 
-.alert-danger{
+.tooltip {
+  position: absolute;
+  left: 0;
+  top: 120%;
+  background: rgba(0, 0, 0, 0.814);
+  padding: 7px 10px;
+  color: #fff;
+  border-radius: 5px;
+  z-index: 10;
+  opacity: 0;
+  animation: fade-in-out 5s linear forwards;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  10%,
+  80% {
+    opacity: 1;
+  }
+  90%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: 10%;
+  border-radius: 2px;
+  border: 10px solid transparent;
+  border-left-color: rgba(0, 0, 0, 0.714);
+  border-top-color: rgba(0, 0, 0, 0.714);
+  rotate: 45deg;
+  transition: 0.5s;
+}
+.alert-danger {
   border: 1px solid rgb(253, 155, 155);
   box-shadow: -4px -4px 8px rgb(255, 182, 182), 4px 4px 8px rgb(255, 79, 79);
 }
 
-.alert-danger label{
-  color: rgb(255, 95, 95);
+.alert-danger label,
+.alert-danger input {
+  color: rgb(255, 95, 95) !important;
 }
-/*
-.arrow-down::before,
-.arrow-down::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  translate: -50% 0;
-}
-.arrow-down::before {
-
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  width: 20px;
-  height: 20px;
-}
-
-.arrow-down::after{
-  width: 50px ;
-  height: 50px;
-
-} */
