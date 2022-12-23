@@ -2,8 +2,8 @@
   <h2>History</h2>
   <hr />
   <ul>
-    <li *ngFor="let history of histories.slice().reverse()">
-      <div class="history__row">
+    <li *ngFor="let history of histories.slice().reverse(); trackBy: historyTrackByFn">
+      <div class="history__row" (click)="selectHistory(history)">
         {{ history.firstNumber }}
         <b>{{ history.operator | toOperator }}</b>
         {{ history.secondNumber }}

@@ -1,0 +1,15 @@
+<div class="my-container">
+  <h2>@Input @Output</h2>
+  <div class="grid">
+    <app-first-input
+      (eventFirstInputValue)="output.firstNumber = $event"
+    ></app-first-input>
+    <app-second-input
+      (eventSecondInputValue)="output.secondNumber = $event"
+    ></app-second-input>
+    <app-output
+      #output
+      class="grid-full"
+    ></app-output>
+  </div>
+</div>

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BACKSPACE } from 'src/constants/general.constant';
 import { HistoryComponent } from './../history/history.component';
-import { Operation } from './../interfaces/operation';
+import { Operation } from '../../interfaces/operation';
 
 @Component({
   selector: 'app-calculator',
@@ -32,7 +32,7 @@ export class CalculatorComponent implements OnInit {
     {
       name: 'divide',
       symbol: '/',
-    },
+    }
   ];
 
   currentOperator = '=';
@@ -52,11 +52,12 @@ export class CalculatorComponent implements OnInit {
     if (value === '' && inputChar === '.') {
       event.target.value = '0.';
     }
-    let inValid = false;
-    // inValid = (value !== '' || value.includes('-')) && inputChar === '-';
-    inValid = event.target.value.includes('.') && inputChar === '.';
-
-    if (event.keyCode !== BACKSPACE && (!pattern.test(inputChar) || inValid)) {
+    if (
+      event.keyCode !== BACKSPACE &&
+      (!pattern.test(inputChar) ||
+        ((value !== '' || value.includes('-')) && inputChar === '-') ||
+        (event.target.value.includes('.') && inputChar === '.'))
+    ) {
       event.preventDefault();
     }
   }
@@ -117,5 +118,12 @@ export class CalculatorComponent implements OnInit {
       result: result,
     };
     this.appHistory.addHistory(operation);
+  }
+
+  getHistoryOperation(operation: Operation){
+    this.formCalculator.get('inputA')?.setValue(operation.firstNumber);
+    this.formCalculator.get('inputB')?.setValue(operation.secondNumber);
+    this.currentOperator = operation.operator;
+    this.result = String(operation.result);
   }
 }

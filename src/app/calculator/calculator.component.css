@@ -12,6 +12,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
+.grid__left{
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
 
 .grid__center {
   grid-column-start: 2;

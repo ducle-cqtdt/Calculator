@@ -2,11 +2,14 @@
   <div class="container-fluid">
     <h1>Calculator</h1>
     <div class="grid">
+      <div class="grid__left">
+        <app-left></app-left>
+      </div>
       <div class="grid__center">
         <ng-container
           *ngTemplateOutlet="
             tmplInput;
-            context: { inputId: 'inputA', controlName: 'inputA' }
+            context: { inputId: 'inputA', controlName: 'inputA', maxlength: 30 }
           "
         ></ng-container>
         <div class="operator">
@@ -24,7 +27,8 @@
           [ngTemplateOutlet]="tmplInput"
           [ngTemplateOutletContext]="{
             inputId: 'inputB',
-            controlName: 'inputB'
+            controlName: 'inputB',
+            maxlength: 30
           }"
         ></ng-container>
 
@@ -60,11 +64,18 @@
         </div>
       </div>
       <div class="grid__right">
-        <app-history></app-history>
+        <app-history
+          (getHistoryOperation)="getHistoryOperation($event)"
+        ></app-history>
       </div>
     </div>
   </div>
-  <ng-template #tmplInput let-controlName="controlName" let-inputId="inputId">
+  <ng-template
+    #tmplInput
+    let-controlName="controlName"
+    let-inputId="inputId"
+    let-maxlength="maxlength"
+  >
     <div
       class="form-group"
       [class.alert-danger]="
@@ -78,13 +89,14 @@
         type="text"
         (keypress)="keyPress($event)"
         class="form-control"
+        [maxlength]="maxlength"
         required
       />
       <label [for]="inputId">Input</label>
       <span
         class="tooltip"
         *ngIf="formCalculator.controls[controlName].invalid && isCalculate"
-        >Field cannot be blank!</span
+      >Field cannot be blank!</span
       >
     </div>
   </ng-template>

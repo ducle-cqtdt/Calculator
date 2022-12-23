@@ -1,6 +1,5 @@
-import { Operation } from './../interfaces/operation';
-import { CalculatorComponent } from './../calculator/calculator.component';
-import { Component, OnInit } from '@angular/core';
+import { Operation } from '../../interfaces/operation';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-history',
@@ -8,15 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./history.component.css'],
 })
 export class HistoryComponent implements OnInit {
-  histories:Array<Operation>= [];
+
+  @Output() getHistoryOperation = new EventEmitter<Operation>();
+  histories: Array<Operation> = [];
   constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-  }
-
-  addHistory(operation:Operation){
+  addHistory(operation: Operation) {
     this.histories.push(operation);
   }
 
+  selectHistory(history: Operation) {
+    this.getHistoryOperation.emit(history);
+  }
+  historyTrackByFn(index: number, history: Operation) {
+    return history;
+  }
 }
